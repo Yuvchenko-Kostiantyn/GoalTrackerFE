@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AchievementsComponent } from './achievements/achievements.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const routes: Routes = [
-  {path: '', component: ProfilePageComponent}
+  {
+    path: '',
+    children: [
+      {path: '', component: ProfilePageComponent},
+      {path: 'achievements', component: AchievementsComponent}
+    ]
+  }
 ];
 
 @NgModule({
