@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { PasswordValidator } from '../../shared/validators/password.validator'
+import { PasswordValidator } from '../../shared/validators/password.validator';
 
 @Component({
   selector: 'app-signup',
@@ -10,29 +10,29 @@ import { PasswordValidator } from '../../shared/validators/password.validator'
 })
 export class SignupComponent implements OnInit {
   public registrationForm: FormGroup;
-  private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  get email(){
+  get email(): AbstractControl{
     return this.registrationForm.get('email');
   }
 
-  get password(){
+  get password(): AbstractControl{
     return this.registrationForm.get('password');
   }
-  
-  get first_name(){
+
+  get first_name(): AbstractControl{
     return this.registrationForm.get('first_name');
   }
 
-  get last_name(){
+  get last_name(): AbstractControl{
     return this.registrationForm.get('last_name');
   }
 
-  get birthdate(){
+  get birthdate(): AbstractControl{
     return this.registrationForm.get('birthdate');
   }
 
-  get gender(){
+  get gender(): AbstractControl{
     return this.registrationForm.get('gender');
   }
 
@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
   }
 
 
-  onSubmit(){
-    this.authService.registerUser(this.registrationForm.value)
+  onSubmit(): void{
+    this.authService.registerUser(this.registrationForm.value);
   }
 }

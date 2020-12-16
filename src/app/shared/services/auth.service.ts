@@ -7,7 +7,7 @@ export class AuthService {
   // Service for future registration and authorization API interaction
   constructor() { }
 
-    registerUser(data){
-      console.log(data)
+    registerUser(data): void{
+      console.log(data);
     }
 }
