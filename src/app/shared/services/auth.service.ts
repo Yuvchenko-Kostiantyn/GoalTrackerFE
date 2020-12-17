@@ -10,4 +10,8 @@ export class AuthService {
     registerUser(data): void{
       console.log(data);
     }
+    loginUser(data) {
+      console.log(data);
+      return true;
+    }
 }

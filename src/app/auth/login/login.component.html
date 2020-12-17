@@ -2,41 +2,30 @@
     <div class="row align-items-center">
         <div class="col justify-content-center flex-column d-lg-flex h-100">
             <h1 class="text-center">Login</h1>
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <input type="email" formControlName="username" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <!-- <small *ngIf="!email.invalid || !email.touched" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                  <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" formControlName="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" id="exampleInputPassword1">
+                  <small class="text-danger" *ngIf="password.invalid && password.touched">Password must be at least 5 characters in length</small>
                 </div>
                 <!-- <div class="form-group form-check">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div> -->
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                  <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Login
+                  </button>
+                  <a routerLink="/auth/signup" class="btn btn-link">Register</a>
+                </div>
             </form>
         </div>
     </div>
 </div>
-
-<!-- <div class="container">
-    <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-</div> -->
