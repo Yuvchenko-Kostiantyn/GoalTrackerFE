@@ -10,7 +10,7 @@ export class AuthService {
     registerUser(data): void{
       console.log(data);
     }
-    loginUser(data) {
+    loginUser(data): boolean {
       console.log(data);
       return true;
     }
