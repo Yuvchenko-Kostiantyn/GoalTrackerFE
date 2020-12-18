@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { textChangeRangeIsUnchanged } from 'typescript';
 import { PasswordValidator } from '../../shared/validators/password.validator';
 
 @Component({
@@ -55,6 +56,16 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit(): void{
-    this.authService.registerUser(this.registrationForm.value);
+    const body = {
+      email: this.email.value,
+      password: this.password.value,
+      firstName: this.first_name.value,
+      secondName: this.last_name.value,
+      gender: this.gender.value,
+      birthdate: new Date(this.birthdate.value)
+    }
+
+    this.authService.registerUser(body)
+      .subscribe(res => console.log(res));
   }
 }
