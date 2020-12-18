@@ -33,7 +33,21 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.loading = true;
-    this.authService.loginUser(this.loginForm.value);
+    const body = {
+      email: this.email.value,
+      password: this.password.value,
+    }
+
+    this.authService.loginUser(body)
+      .subscribe(
+        response => {
+        console.log(response)
+        this.loading = false;
+      },
+        error => {
+        console.log(error.message)
+        this.loading = false;
+      })
   }
 
 }
