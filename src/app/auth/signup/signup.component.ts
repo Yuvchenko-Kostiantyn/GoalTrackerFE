@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { PasswordValidator } from '../../shared/validators/password.validator';
 
@@ -38,7 +39,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,20 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit(): void{
-    this.authService.registerUser(this.registrationForm.value);
+    const body = {
+      email: this.email.value,
+      password: this.password.value,
+      firstName: this.first_name.value,
+      secondName: this.last_name.value,
+      gender: this.gender.value,
+      birthdate: new Date(this.birthdate.value)
+    };
+
+    this.authService.registerUser(body)
+      .subscribe(res => {
+        localStorage.setItem('token', res.token );
+        localStorage.setItem('userId', res.id);
+        this.router.navigate(['/dashboard']);
+      });
   }
 }
