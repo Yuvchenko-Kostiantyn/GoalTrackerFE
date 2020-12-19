@@ -39,18 +39,18 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
     };
 
-    this.authService.loginUser(body)
-      .subscribe(
+    this.authService.loginUser(body).subscribe(
         response => {
-        localStorage.setItem('token', response.token );
+        localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.id);
         this.router.navigate(['/dashboard']);
         this.loading = false;
+        this.authService.isUserLoggedIn.next(true);
       },
         error => {
-        console.log(error.message);
+        console.error(error);
         this.loading = false;
-      });
+      }
+      );
   }
-
 }
