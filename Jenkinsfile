@@ -12,10 +12,6 @@ pipeline {
      }
    }
 
-   tools {
-      maven "Maven"   
-   }
-
    stages {  
       stage('Clone'){
           steps{  
