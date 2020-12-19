@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId', response.id);
         this.router.navigate(['/dashboard']);
         this.loading = false;
+        this.authService.isUserLoggedIn.next(true);
       },
         error => {
         console.error(error);
