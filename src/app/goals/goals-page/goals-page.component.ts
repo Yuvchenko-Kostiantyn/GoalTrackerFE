@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalsPageComponent implements OnInit {
 
+  public goals;
+
   constructor() { }
 
   ngOnInit(): void {
