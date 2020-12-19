@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   }
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,7 +34,22 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.loading = true;
-    this.authService.loginUser(this.loginForm.value);
-  }
+    const body = {
+      email: this.email.value,
+      password: this.password.value,
+    };
 
+    this.authService.loginUser(body).subscribe(
+        response => {
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('userId', response.id);
+        this.router.navigate(['/dashboard']);
+        this.loading = false;
+      },
+        error => {
+        console.error(error);
+        this.loading = false;
+      }
+      );
+  }
 }

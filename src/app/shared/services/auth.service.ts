@@ -12,19 +12,17 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  private url = 'http://3.87.91.14:8081';
-
+  private url = 'http://3.87.91.14/api';
 
     registerUser(data): Observable<any>{
       return this.http.post(this.url + '/registration', data);
     }
 
-    loginUser(data): boolean {
-      console.log(data);
-      return true;
+    loginUser(data): Observable<any> {
+      return this.http.post(this.url + '/login', data);
     }
 
-    logout(){
+    logout(): void{
       this.isUserLoggedIn.next(false);
       localStorage.clear();
       this.router.navigate(['/']);
