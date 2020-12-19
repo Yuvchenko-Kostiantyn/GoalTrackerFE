@@ -6,8 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'landing', pathMatch: 'full'},
-  {path: 'landing', component: LandingComponent},
+  {path: '', redirectTo: 'index', pathMatch: 'full'},
+  {path: 'index', component: LandingComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {
     path: 'auth',

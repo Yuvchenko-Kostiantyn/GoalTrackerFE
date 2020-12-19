@@ -14,12 +14,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLogout(){
+  onLogout(): void{
     this.authServiсe.logout({})
       .subscribe(() => {
         this.authServiсe.isUserLoggedIn.next(false);
         localStorage.clear();
         this.router.navigate(['/']);
-      })
+      });
   }
 }

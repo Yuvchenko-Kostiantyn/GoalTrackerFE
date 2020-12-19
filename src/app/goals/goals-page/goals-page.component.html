@@ -1,1 +1,13 @@
-<p>goals-page works!</p>
+<div class="container">
+    <div class="col">
+        <div class="row d-flex justify-content-center mt-2">
+            <h2>List of your goals</h2>            
+        </div>
+        <div class="row">
+            <div *ngIf="!goals">
+                <p>It seems you have no goals yet</p>
+                <a routerLink="/goals/add">Let`s add one then...</a>
+            </div>
+        </div>
+    </div>
+</div>
