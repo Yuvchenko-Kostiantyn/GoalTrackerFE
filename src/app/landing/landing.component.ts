@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
-
+    this.authService.isUserLoggedIn.subscribe(
+      res => {
+        if (res){
+          this.router.navigate(['/dashboard']);
+        }
+      });
   }
 }
