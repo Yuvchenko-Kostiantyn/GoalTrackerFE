@@ -23,7 +23,7 @@ export class AddGoalComponent implements OnInit {
       .subscribe(
         res => {
         this.globalGoals = res;
-        console.log(this.globalGoals)
+        console.log(this.globalGoals);
         },
         err => {
           console.error(err.message);
@@ -63,14 +63,15 @@ export class AddGoalComponent implements OnInit {
   }
 
   addPersonalGoal(body: FormedGoal): void{
-    console.log(body);
-      this.goalsService.addPersonalGoal(body).subscribe(
+      console.log(body);
+      this.goalsService.addPersonalGoal(body)
+        .subscribe(
         res => {
           console.log(res),
           this.router.navigate(['/goals']);
         },
         error => console.error(error)
-    )
+    );
   }
 
 }

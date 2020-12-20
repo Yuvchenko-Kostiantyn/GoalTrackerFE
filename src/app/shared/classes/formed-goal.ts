@@ -1,4 +1,4 @@
-import { Seasons } from "./seasons";
+import { Seasons } from './seasons';
 
 export class FormedGoal {
   public name: string;
@@ -7,7 +7,7 @@ export class FormedGoal {
   public globalGoalId: number;
   public userId: number;
   public season: Seasons;
-  public description: string
+  public description: string;
 
   constructor(name, sd, ed, global, userId, season, description){
     this.name = name;
