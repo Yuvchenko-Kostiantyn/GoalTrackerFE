@@ -12,6 +12,7 @@ import { PasswordValidator } from '../../shared/validators/password.validator';
 export class SignupComponent implements OnInit {
   public registrationForm: FormGroup;
   private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  public isMailAlredyExists = false;
 
   get email(): AbstractControl{
     return this.registrationForm.get('email');
@@ -67,10 +68,17 @@ export class SignupComponent implements OnInit {
     };
 
     this.authService.registerUser(body)
-      .subscribe(res => {
-        localStorage.setItem('token', res.token );
-        localStorage.setItem('userId', res.id);
-        this.router.navigate(['/dashboard']);
-      });
+      .subscribe(
+        res => {
+          localStorage.setItem('token', res.token );
+          localStorage.setItem('userId', res.id);
+          this.router.navigate(['/dashboard']);
+        },
+        error => {
+          if(error.error.message === 'User already exists'){
+            this.isMailAlredyExists = true;
+          }
+        }
+      );
   }
 }

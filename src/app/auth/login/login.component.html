@@ -6,8 +6,9 @@
                 <div class="form-group">
                   <label for="email">Email address</label>
                   <input type="email" formControlName="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="email" aria-describedby="emailHelp">
-                  <small *ngIf="!email.invalid || !email.touched" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <small *ngIf="!email.invalid || !email.touched || !isEmailOrPasswordInvalid" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
+                  <small *ngIf="isEmailOrPasswordInvalid" class="text-danger">Invalid password or email</small>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
