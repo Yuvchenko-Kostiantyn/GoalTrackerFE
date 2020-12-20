@@ -7,6 +7,7 @@
               <div class="col-sm-10">
                 <input type="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="email" placeholder="Email" formControlName='email'>
                 <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
+                <small *ngIf="mailAlredyExists" class="text-danger">This email is already in use</small>
               </div>
             </div>
     
