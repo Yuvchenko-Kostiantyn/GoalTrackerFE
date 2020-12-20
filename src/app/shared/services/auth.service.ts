@@ -10,7 +10,7 @@ export class AuthService {
   // Service for future registration and authorization API interaction
   constructor(private http: HttpClient) { }
 
-  private url = 'http://3.87.91.14/api';
+  private url = 'environment.apiUrl';
 
 
     registerUser(data): Observable<any>{
