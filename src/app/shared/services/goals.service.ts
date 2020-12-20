@@ -32,4 +32,8 @@ export class GoalsService {
   addPersonalGoal(body: FormedGoal): Observable<IGoal>{
     return this.http.post<IGoal>(this.url + `/personal-goal`, body);
   }
+
+  getUsersPersonalGoals(userId: string){
+    return this.http.get(this.url + `/personal-goal/all?userId=${userId}`);
+  }
 }
