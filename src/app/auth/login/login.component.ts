@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
       },
         error => {
         console.error(error);
-        if(error.error.message === 'Invalid username or password'){
+        if (error.error.message === 'Invalid username or password'){
           this.isEmailOrPasswordInvalid = true;
-        };
+        }
         this.loading = false;
       }
       );

@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/']);
   }
 
-  toggleNav() {
+  toggleNav(): void {
     this.isNavbarShown = !this.isNavbarShown;
   }
 }
