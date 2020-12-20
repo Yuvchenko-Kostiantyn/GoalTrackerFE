@@ -12,7 +12,7 @@ import { PasswordValidator } from '../../shared/validators/password.validator';
 export class SignupComponent implements OnInit {
   public registrationForm: FormGroup;
   private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  public mailAlredyExists = false;
+  public isMailAlredyExists = false;
 
   get email(): AbstractControl{
     return this.registrationForm.get('email');
@@ -76,7 +76,7 @@ export class SignupComponent implements OnInit {
         },
         error => {
           if(error.error.message === 'User already exists'){
-            this.mailAlredyExists = true;
+            this.isMailAlredyExists = true;
           }
         }
       );
