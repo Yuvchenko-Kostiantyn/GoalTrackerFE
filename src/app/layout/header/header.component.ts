@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  public isNavbarShown = false;
 
   constructor(private authServiсe: AuthService, private router: Router) { }
 
@@ -15,11 +16,13 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void{
-    this.authServiсe.logout({})
-      .subscribe(() => {
-        this.authServiсe.isUserLoggedIn.next(false);
-        localStorage.clear();
-        this.router.navigate(['/']);
-      });
+    // this.authServiсe.logout({}).subscribe(() => {});
+      this.authServiсe.isUserLoggedIn.next(false);
+      localStorage.clear();
+      this.router.navigate(['/']);
+  }
+
+  toggleNav() {
+    this.isNavbarShown = !this.isNavbarShown;
   }
 }
