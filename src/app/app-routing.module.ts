@@ -17,6 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./goals/goals.module').then(m => m.GoalsModule)
   },
   {
+    // /:id
     path: 'profile/:id',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
   },

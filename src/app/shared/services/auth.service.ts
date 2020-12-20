@@ -20,4 +20,11 @@ export class AuthService {
     loginUser(data): Observable<any> {
       return this.http.post(this.url + '/login', data);
     }
+
+    getUser(userId, headers): Observable<any> {
+      return this.http.get(this.url + `/user/${userId}`, headers);
+    }
+    updateUser(body, headers, userId) {
+      return this.http.put(this.url + `/user/${userId}`, body, headers);
+    }
 }
