@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LoginComponent implements OnInit {
 
   loading = false;
+  public isEmailOrPasswordInvalid = false;
 
   public loginForm: FormGroup;
   private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -39,19 +40,22 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
     };
 
-    this.authService.loginUser(body)
-      .subscribe(
+    this.authService.loginUser(body).subscribe(
         response => {
-        localStorage.setItem('token', response.token );
+        localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.id);
         this.router.navigate(['/dashboard']);
         // this.router.navigate([`/profile/${response.id}`]);
         this.loading = false;
+        this.authService.isUserLoggedIn.next(true);
       },
         error => {
-        console.log(error.message);
+        console.error(error);
+        if (error.error.message === 'Invalid username or password'){
+          this.isEmailOrPasswordInvalid = true;
+        }
         this.loading = false;
-      });
+      }
+      );
   }
-
 }

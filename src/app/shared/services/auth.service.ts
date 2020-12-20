@@ -1,17 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   // Service for future registration and authorization API interaction
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
-  private url = 'environment.apiUrl';
 
+  public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
+  private url = environment.apiUrl;
 
     registerUser(data): Observable<any>{
       return this.http.post(this.url + '/registration', data);
@@ -21,10 +24,8 @@ export class AuthService {
       return this.http.post(this.url + '/login', data);
     }
 
-    getUser(userId, headers): Observable<any> {
-      return this.http.get(this.url + `/user/${userId}`, headers);
-    }
-    updateUser(body, headers, userId) {
-      return this.http.put(this.url + `/user/${userId}`, body, headers);
+    logout(data): Observable<any>{
+      return this.http.get(this.url + '/signout');
+
     }
 }
