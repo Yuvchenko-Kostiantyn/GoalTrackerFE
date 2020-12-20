@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
           this.router.navigate(['/dashboard']);
         },
         error => {
-          if(error.error.message === 'User already exists'){
+          if (error.error.message === 'User already exists'){
             this.isMailAlredyExists = true;
           }
         }
