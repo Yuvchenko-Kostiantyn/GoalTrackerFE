@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  private url = 'http://3.87.91.14/api';
+  private url = environment.apiUrl;
 
     registerUser(data): Observable<any>{
       return this.http.post(this.url + '/registration', data);
