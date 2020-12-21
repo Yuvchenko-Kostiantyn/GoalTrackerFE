@@ -7,8 +7,6 @@ import { Seasons } from '../classes/seasons';
 import { IGoal } from '../interfaces/igoal';
 import { IPersonalGoal } from '../interfaces/ipersonal-goal';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -39,6 +37,6 @@ export class GoalsService {
   }
 
   getUserGoalById(goalId: string, userId: string): Observable<IPersonalGoal>{
-    return this.http.get<IPersonalGoal>(`${this.url}/personal-goal?userId=${userId}&personalGoalId=${goalId}`)
+    return this.http.get<IPersonalGoal>(`${this.url}/personal-goal?userId=${userId}&personalGoalId=${goalId}`);
   }
 }

@@ -22,12 +22,9 @@ export class GoalProgressDisplayComponent implements OnInit {
 
     this.goalsService.getUserGoalById(this.goalId, this.userId)
     .subscribe(
-      res => {
-        this.goal = res,
-        console.log(this.goal)
-      },
+      res => this.goal = res,
       err => console.error(err)
-    )
+    );
   }
 
 }

@@ -12,16 +12,15 @@ export class SeparateGoalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getProgressValue(new Date(this.goal.startDate), this.goal.days)
+    this.getProgressValue(new Date(this.goal.startDate), this.goal.days);
   }
 
-  getProgressValue(startDate: Date, goalLength){
-    const now = new Date()
+  getProgressValue(startDate: Date, goalLength: number): void{
+    const now = new Date();
     const diff = Math.abs(startDate.getTime() - now.getTime());
-    const days = diff/86400000
-    console.log(days)
-    const precentage = ((days/goalLength)*100)-1
-    this.progressBarLength = Math.floor(precentage) + '%'
+    const days = diff / 86400000;
+    const precentage = ((days / goalLength) * 100) - 1;
+    this.progressBarLength = Math.floor(precentage) + '%';
   }
 
 }
