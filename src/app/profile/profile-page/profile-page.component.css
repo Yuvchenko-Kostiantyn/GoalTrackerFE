@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
 :host{
     display: block;
-    height: 100vh;
+    height: calc(100vh - 112px);
     background-image: url('../../../assets/images/bg.png');
     font-family: 'Oswald', sans-serif;
 }
@@ -16,7 +16,6 @@ p {
 }
 
 .userInfo, .badges {
-    margin: 1rem 0;
     padding: 1rem;
 }
 .avatar {
