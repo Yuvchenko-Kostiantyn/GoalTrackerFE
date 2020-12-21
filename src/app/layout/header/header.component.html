@@ -13,7 +13,7 @@
             <a class="nav-link" routerLink="/goals" routerLinkActive="active">Goals</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile/:id" routerLinkActive="active">Profile</a>
+            <a class="nav-link" [routerLink]="userId" routerLinkActive="active">Profile</a>
           </li>
         </ul>
         <a class="link-dark" (click)="onLogout()">Log Out</a>

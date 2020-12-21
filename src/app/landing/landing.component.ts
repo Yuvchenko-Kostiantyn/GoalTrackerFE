@@ -16,8 +16,6 @@ export class LandingComponent implements OnInit {
         if (res){
           this.router.navigate(['/dashboard']);
         }
-      },
-      error => console.error(error.message)
-      );
+      });
   }
 }

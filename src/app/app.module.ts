@@ -18,6 +18,7 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
     PageNotFoundComponent,
     LandingComponent,
     DashboardComponent,
+    // BadgeComponent,
   ],
   imports: [
     BrowserModule,
