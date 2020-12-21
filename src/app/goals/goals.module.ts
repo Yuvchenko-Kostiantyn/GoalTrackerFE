@@ -7,6 +7,10 @@ import { GoalProgressComponent } from './goal-progress/goal-progress.component';
 import { GoalProgressDisplayComponent } from './goal-progress-display/goal-progress-display.component';
 import { AddGoalComponent } from './add-goal/add-goal.component';
 import { AddGoalProgressComponent } from './add-goal-progress/add-goal-progress.component';
+import { CustomGoalComponent } from './add-goal/custom-goal/custom-goal.component';
+import { GlobalGoalComponent } from './add-goal/global-goal/global-goal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SeparateGoalComponent } from './goals-page/separate-goal/separate-goal.component';
 
 
 @NgModule({
@@ -15,10 +19,14 @@ import { AddGoalProgressComponent } from './add-goal-progress/add-goal-progress.
     GoalProgressComponent,
     GoalProgressDisplayComponent,
     AddGoalComponent,
-    AddGoalProgressComponent],
+    AddGoalProgressComponent,
+    CustomGoalComponent,
+    GlobalGoalComponent,
+    SeparateGoalComponent],
   imports: [
     CommonModule,
-    GoalsRoutingModule
+    GoalsRoutingModule,
+    ReactiveFormsModule,
   ]
 })
 export class GoalsModule { }
