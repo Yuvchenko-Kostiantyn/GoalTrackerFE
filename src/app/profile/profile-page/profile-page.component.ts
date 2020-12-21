@@ -65,5 +65,7 @@ export class ProfilePageComponent implements OnInit {
   onSubmit(): void {
     this.router.navigate([`/profile/${this.urlId}/settings`]);
   }
-
+  onClick(): void {
+    this.router.navigate([`/profile/${this.urlId}/achievements`]);
+  }
 }

@@ -1,25 +1,20 @@
-import { IBadge } from './../interfaces/ibadge';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IUser } from '../interfaces/iuser';
+import { IBadge } from '../interfaces/ibadge';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BadgeService {
   constructor(private router: Router, private http: HttpClient) { }
-
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
   private url = environment.apiUrl;
 
-    getUser(userId): Observable<IUser> {
-      return this.http.get<IUser>(this.url + `/user/${userId}`);
-    }
-    updateUser(body, userId): Observable<IUser> {
-      return this.http.put<IUser>(this.url + `/user/${userId}`, body);
+    getBadgesByUserId(userId): Observable<IBadge[]> {
+      return this.http.get<IBadge[]>(this.url + `/badge/all/${userId}`);
     }
 }
