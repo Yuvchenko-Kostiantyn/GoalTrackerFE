@@ -8,9 +8,10 @@ import { GoalProgressDisplayComponent } from './goal-progress-display/goal-progr
 import { AddGoalComponent } from './add-goal/add-goal.component';
 import { AddGoalProgressComponent } from './add-goal-progress/add-goal-progress.component';
 import { CustomGoalComponent } from './add-goal/custom-goal/custom-goal.component';
-import { GlobalGoalComponent } from './add-goal/global-goal/global-goal.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { SeparateGoalComponent } from './goals-page/separate-goal/separate-goal.component';
+import { GlobalGoalComponent } from './add-goal/global-goal/global-goal.component';
 
 
 @NgModule({
