@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IUser } from '../interfaces/iuser';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,10 @@ export class UserService {
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
   private url = environment.apiUrl;
 
-    getUser(userId, headers): Observable<any> {
-      return this.http.get(this.url + `/user/${userId}`, headers);
+    getUser(userId): Observable<IUser> {
+      return this.http.get<IUser>(this.url + `/user/${userId}`);
     }
-    updateUser(body, headers, userId): Observable<any> {
-      return this.http.put(this.url + `/user/${userId}`, body, headers);
+    updateUser(body, userId): Observable<IUser> {
+      return this.http.put<IUser>(this.url + `/user/${userId}`, body);
     }
 }

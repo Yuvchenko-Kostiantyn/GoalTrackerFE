@@ -1,6 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -59,18 +57,13 @@ export class ProfilePageComponent implements OnInit {
     if (this.urlId === localStorage.getItem('userId')) {
       this.isOwner = true;
     }
-    const token = localStorage.getItem('token');
-    const headers = {
-      headers: new HttpHeaders({ Authorization: token || '' })
-    };
-    this.userService.getUser(this.urlId, headers)
+    this.userService.getUser(this.urlId)
       .subscribe(user => {
         this.user = user;
       });
   }
   onSubmit(): void {
-    localStorage.setItem('user', JSON.stringify(this.user));
-    this.router.navigate(['/profile/19/settings']);
+    this.router.navigate([`/profile/${this.urlId}/settings`]);
   }
 
 }
