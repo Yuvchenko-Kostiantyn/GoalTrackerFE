@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <h2 class="text-center mt-2">All the important stuff</h2>
+            <div class="goals" *ngIf="goals"> 
+                <div class="card" *ngFor="let goal of goals">
+                    <div class="card-body">
+                      {{goal.name}}
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -52,4 +52,8 @@ export class GoalsService {
   getDayProgress(goalId): Observable<any>{
     return this.http.get(`${this.url}/day-progress/all?personalGoalId=${goalId}`);
   }
+
+  getUserGoalsStatistics(goalId){
+    return this.http.get(`${this.url}/personal-goal/all-grouped?userId=${goalId}`)
+  }
 }
