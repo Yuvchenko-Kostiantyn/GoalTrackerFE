@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   public registrationForm: FormGroup;
   private emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   public isMailAlredyExists = false;
+  public locations =  ['DNIPRO', 'KHARKIV', 'KYIV', 'LVIV', 'MYKOLAIV', 'ODESA', 'POLTAVA', 'ZAPORIZHZHIA', 'OTHER'];
 
   get email(): AbstractControl{
     return this.registrationForm.get('email');
@@ -38,6 +39,10 @@ export class SignupComponent implements OnInit {
     return this.registrationForm.get('gender');
   }
 
+  get location(): AbstractControl{
+    return this.registrationForm.get('location');
+  }
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -53,6 +58,7 @@ export class SignupComponent implements OnInit {
       birthdate: ['', Validators.required],
       first_name: ['', [Validators.required, Validators.minLength(3)]],
       last_name: ['', [Validators.required, Validators.minLength(3)]],
+      location: ['', [Validators.required]]
     }, {validator: PasswordValidator});
   }
 
@@ -64,7 +70,8 @@ export class SignupComponent implements OnInit {
       firstName: this.first_name.value,
       secondName: this.last_name.value,
       gender: this.gender.value,
-      birthdate: new Date(this.birthdate.value)
+      birthdate: new Date(this.birthdate.value),
+      location: this.location.value
     };
 
     this.authService.registerUser(body)
@@ -73,7 +80,7 @@ export class SignupComponent implements OnInit {
           localStorage.setItem('token', res.token );
           localStorage.setItem('userId', res.id);
           this.router.navigate(['/dashboard']);
-          this.authService.isUserLoggedIn.next(true)
+          this.authService.isUserLoggedIn.next(true);
         },
         error => {
           if (error.error.message === 'User already exists'){

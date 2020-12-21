@@ -36,17 +36,16 @@ export class AddGoalComponent implements OnInit {
   }
 
   getEndDate(startDate: Date, goalTerm: number): Date{
-    let dateCopy = new Date(startDate);
+    const dateCopy = new Date(startDate);
     const addedDate = dateCopy.setDate(dateCopy.getDate() + goalTerm);
     return new Date(addedDate);
   }
 
   createCustomPersonalGoal(goal): void{
     // It does look horrible, but BE didn't have enough time so i had to
-    // and i barely had time too, so right now it kinda works like it does 
+    // and i barely had time too, so right now it kinda works like it does
     const {goalName, goalTerm, startDate, seasonId, description} = goal;
     const startingDate = new Date(startDate);
-    console.log(startingDate)
     const userId = parseInt(localStorage.getItem('userId'), 10);
     const endDate = this.getEndDate(startingDate, goalTerm);
     const formedGoal = new FormedGoal(goalName, startingDate, endDate, -1, userId, this.seasons[seasonId], description, null);

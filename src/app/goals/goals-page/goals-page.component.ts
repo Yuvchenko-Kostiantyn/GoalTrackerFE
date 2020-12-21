@@ -16,12 +16,9 @@ export class GoalsPageComponent implements OnInit {
   ngOnInit(): void {
     this.goalsService.getUsersPersonalGoals(this.userId)
     .subscribe(
-      res => {
-        this.goals = res,
-        console.log(res)
-      },
+      res => this.goals = res,
       err => console.error(err)
-    )
+    );
   }
 
 }
