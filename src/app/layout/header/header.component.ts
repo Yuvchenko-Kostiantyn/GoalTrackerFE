@@ -9,10 +9,11 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public isNavbarShown = false;
-
+  public userId: string;
   constructor(private authServiсe: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userId = `/profile/${localStorage.getItem('userId')}`;
   }
 
   onLogout(): void{

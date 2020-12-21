@@ -1,0 +1,72 @@
+<div class="container h-100">
+    <div class="col justify-content-center flex-column d-lg-flex h-100">
+        <h1 class="text-center">Settings</h1>
+        <form [formGroup]="updateForm">
+            <div class="form-group row">
+                <label for="first_name" class="col-sm-2 col-form-label">First name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" [class.is-invalid]="first_name.invalid && first_name.touched" id="first_name" placeholder="First Name" formControlName='first_name'>
+                  <div *ngIf="first_name.invalid && first_name.touched">
+                    <small *ngIf="first_name.errors?.required" class="text-danger">First Name is required</small>
+                    <small *ngIf="first_name.errors?.minlength" class="text-danger">First Name must be at least 3 characters long</small>
+                  </div>  
+                </div>
+            </div>
+    
+              <div class="form-group row">
+                <label for="last_name" class="col-sm-2 col-form-label">Last name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" [class.is-invalid]="last_name.invalid && last_name.touched" id="last_name" placeholder="Last Name" formControlName='last_name'>
+                    <div *ngIf="last_name.invalid && last_name.touched">
+                        <small *ngIf="last_name.errors?.required" class="text-danger">Last Name is required</small>
+                        <small *ngIf="last_name.errors?.minlength" class="text-danger">Last Name must be at least 3 characters long</small>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="email" placeholder="Email" formControlName='email'>
+                  <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gender" id="radioMale" value="MALE" checked formControlName='gender'>
+                      <label class="form-check-label" for="radioMale">
+                          Male
+                      </label>
+                    </div>
+      
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gender" id="radioFemale" value="FEMALE" formControlName='gender'>
+                      <label class="form-check-label" for="radioFemale">
+                        Female
+                      </label>
+                    </div>
+                    <small *ngIf="gender.invalid && gender.touched" class="text-danger">Please enter a valid email</small>
+                  </div>
+                </div>
+              </fieldset>
+
+            <div class="form-group row">
+                <label for="birthdate" class="col-sm-2 col-form-label">Date of birth</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" [class.is-invalid]="birthdate.invalid && birthdate.touched" id="birthdate" formControlName='birthdate'>
+                  <small class="text-danger" *ngIf="birthdate.invalid && birthdate.touched">Date of Birth is required</small>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" [disabled]="updateForm.invalid" class="btn btn-primary" (click)="onSubmit()">Sign Up</button>
+              </div>
+            </div>
+        </form>
+    </div>
+</div>
+

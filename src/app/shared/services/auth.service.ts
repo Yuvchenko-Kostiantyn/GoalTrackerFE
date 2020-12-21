@@ -12,6 +12,7 @@ export class AuthService {
   // Service for future registration and authorization API interaction
   constructor(private router: Router, private http: HttpClient) { }
 
+
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
   private url = environment.apiUrl;
 
