@@ -1,5 +1,6 @@
 <div class="container">
     <div class="col">
+        <a class="btn btn-primary btn-sm mt-3" routerLink="add" *ngIf='goals'>Add new goal</a>
         <div class="row mt-2">
             <h2 class="text-center">List of your goals</h2>            
         </div>
@@ -11,9 +12,6 @@
         </div>
         <div class="row" *ngIf="goals">
             <app-separate-goal *ngFor="let goal of goals" [goal]="goal"></app-separate-goal>
-        </div>
-        <div class="row">
-            <a routerLink="add" class="text-center ьи-2">Add new goal</a>
         </div>
     </div>
 </div>
