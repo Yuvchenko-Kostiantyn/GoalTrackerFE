@@ -1,1 +1,27 @@
-<p>add-goal-progress works!</p>
+<div class="container">
+  <a class="btn btn-primary btn-sm mt-3" routerLink="/goals">Go back to goals</a>
+    <h2 class="text-center mb-2">Add progress</h2>
+    <div class="mb-3">
+      <label class="form-label">Proof url</label>
+      <input type="url" class="form-control" [formControl]="progressProof">
+      <small class="form-text">Please provide a url to a photo- or videoproof of your progress. We believe in your honesty.</small>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="submitProgress()">Add progress</button>
+
+    <h2 class="text-center mb-2">Previous progress</h2>
+
+      <table class="table" *ngIf="progressData.length">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of progressData.slice().reverse()">
+            <td>{{record.date  | date:'dd/MM/yyyy'}}</td>
+            <td><a href="{{record.url}}">{{record.url ? record.url : 'No visual proof'}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,13 +1,17 @@
 <div class="container">
     <div class="col">
-        <div class="row d-flex justify-content-center mt-2">
-            <h2>List of your goals</h2>            
+        <a class="btn btn-primary btn-sm mt-3" routerLink="add" *ngIf='goals'>Add new goal</a>
+        <div class="row mt-2">
+            <h2 class="text-center">List of your goals</h2>            
         </div>
-        <div class="row">
-            <div *ngIf="!goals">
+        <div class="row" *ngIf="!goals">
+            <div>
                 <p>It seems you have no goals yet</p>
                 <a routerLink="/goals/add">Let`s add one then...</a>
             </div>
+        </div>
+        <div class="row" *ngIf="goals">
+            <app-separate-goal *ngFor="let goal of goals" [goal]="goal"></app-separate-goal>
         </div>
     </div>
 </div>

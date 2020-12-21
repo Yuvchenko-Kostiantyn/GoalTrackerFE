@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { BadgeService } from 'src/app/shared/services/badge.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -14,38 +15,41 @@ export class ProfilePageComponent implements OnInit {
   isOwner = false;
 
   user: object;
+  badges;
+
   avatar = '../../../assets/images/empty-avatar.png';
 
-  badges = [
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 500
-    },
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 600
-    },
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 200
-    },
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 3000
-    },
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 3500
-    },
-    {
-      img: '../../../assets/images/budg.webp',
-      points: 5500
-    },
-  ];
+  // badges = [
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 500
+  //   },
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 600
+  //   },
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 200
+  //   },
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 3000
+  //   },
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 3500
+  //   },
+  //   {
+  //     img: '../../../assets/images/budg.webp',
+  //     points: 5500
+  //   },
+  // ];
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
+    private badgeService: BadgeService,
     private router: Router
   ) { }
 
@@ -60,6 +64,10 @@ export class ProfilePageComponent implements OnInit {
     this.userService.getUser(this.urlId)
       .subscribe(user => {
         this.user = user;
+      });
+    this.badgeService.getBadgesByUserId(this.urlId)
+      .subscribe(badges => {
+        this.badges = badges;
       });
   }
   onSubmit(): void {

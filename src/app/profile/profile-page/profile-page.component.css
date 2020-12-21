@@ -64,6 +64,8 @@ p {
     border-radius: 20%;
 }
 .points {
+    font-weight: bold;
+    color: green;
     position: absolute;
     bottom: 0;
 }

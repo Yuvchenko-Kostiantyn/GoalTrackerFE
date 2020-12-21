@@ -1,10 +1,24 @@
 <div class="container">
     <div class="col">
-        <div class="row d-flex justify-content-center mt-2">
-            <h2>Create new goal</h2>            
+        <div class="row mt-2 mb-2">
+            <h2 class="text-center">Create new goal</h2>            
         </div>
         <div class="row">
-            <div>{{globalGoals | json}}</div>
+            <ul class="nav nav-pills nav-fill w-100">
+                <li class="nav-item">
+                  <a class="nav-link" [class.active]="goalType==='global'" (click)="changeGoalType('global')">Global goal</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [class.active]="goalType==='custom'" (click)="changeGoalType('custom')">Custom goal</a>
+                </li>
+            </ul>
+        </div>
+
+            <app-global-goal *ngIf="goalType==='global' && globalGoals" (goalSubmit)="createGlobalPersonalGoal($event)" [globalGoals]="globalGoals"></app-global-goal>
+            <app-custom-goal *ngIf="goalType==='custom'" (goalSubmit)="createCustomPersonalGoal($event)" [seasons]="seasons"></app-custom-goal>
+
+        <div class="row">
+            <a routerLink="/goals" class="text-center">Back to my goals</a>
         </div>
     </div>
 </div>
