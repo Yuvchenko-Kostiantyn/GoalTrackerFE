@@ -1,5 +1,5 @@
 :host {
     display: block;
-    height: 100vh;
+    height: calc(100vh - 112px);
     background-image: url('../../../../assets/images/bg.png');
 }
