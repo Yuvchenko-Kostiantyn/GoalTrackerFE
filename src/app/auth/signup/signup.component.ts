@@ -73,6 +73,7 @@ export class SignupComponent implements OnInit {
           localStorage.setItem('token', res.token );
           localStorage.setItem('userId', res.id);
           this.router.navigate(['/dashboard']);
+          this.authService.isUserLoggedIn.next(true)
         },
         error => {
           if (error.error.message === 'User already exists'){

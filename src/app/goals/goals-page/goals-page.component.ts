@@ -14,11 +14,14 @@ export class GoalsPageComponent implements OnInit {
   constructor(private goalsService: GoalsService) { }
 
   ngOnInit(): void {
-    // this.goalsService.getUsersPersonalGoals(this.userId)
-    // .subscribe(
-    //   res => console.log(res),
-    //   err => console.error(err)
-    // )
+    this.goalsService.getUsersPersonalGoals(this.userId)
+    .subscribe(
+      res => {
+        this.goals = res,
+        console.log(res)
+      },
+      err => console.error(err)
+    )
   }
 
 }

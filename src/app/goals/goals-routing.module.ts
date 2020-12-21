@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', component: GoalsPageComponent},
   {path: 'add', component: AddGoalComponent},
   {
-    path: ':goaiId', component: GoalProgressComponent,
+    path: ':goalId', component: GoalProgressComponent,
     children: [
       {path: '', component: GoalProgressDisplayComponent},
       {path: 'addprogress', component: AddGoalProgressComponent},

@@ -10,6 +10,7 @@ import { AddGoalProgressComponent } from './add-goal-progress/add-goal-progress.
 import { CustomGoalComponent } from './add-goal/custom-goal/custom-goal.component';
 import { GlobalGoalComponent } from './add-goal/global-goal/global-goal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SeparateGoalComponent } from './goals-page/separate-goal/separate-goal.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AddGoalComponent,
     AddGoalProgressComponent,
     CustomGoalComponent,
-    GlobalGoalComponent],
+    GlobalGoalComponent,
+    SeparateGoalComponent],
   imports: [
     CommonModule,
     GoalsRoutingModule,

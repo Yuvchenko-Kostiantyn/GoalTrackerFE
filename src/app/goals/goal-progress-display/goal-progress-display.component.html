@@ -1,1 +1,33 @@
-<p>goal-progress-display works!</p>
+<div class="container">
+    <div class="col">
+        <h2 class="text-center mb-3">Goal data</h2>
+        <table class="table" *ngIf="goal">
+            <tbody>
+              <tr>
+                  <td>Goal name</td>
+                  <td>{{goal.name}}</td>
+              </tr>
+              <tr>
+                  <td>Goal description</td>
+                  <td>{{goal.description}}</td>
+              </tr>
+              <tr>
+                  <td>Goal start</td>
+                  <td>{{goal.startDate | date:'dd/MM/yyyy'}}</td>
+              </tr>
+              <tr>
+                <td>Goal end</td>
+                <td>{{goal.endDate | date:'dd/MM/yyyy'}}</td>
+              </tr>
+              <tr>
+                <td>Goal season</td>
+                <td>{{goal.season? goal.season : 'All Year'}}</td>
+              </tr>
+              <tr>
+                <td>Goal status</td>
+                <td>{{goal.status}}</td>
+            </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
