@@ -1,5 +1,5 @@
 export interface Iprogress {
-    date: Date
-    url: string
-    personalGoalid: string
+    date: Date;
+    url: string;
+    personalGoalid: string;
 }

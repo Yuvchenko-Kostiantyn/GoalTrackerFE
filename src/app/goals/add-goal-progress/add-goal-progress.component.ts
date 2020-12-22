@@ -14,36 +14,35 @@ export class AddGoalProgressComponent implements OnInit {
 
   public goalId;
   public progressData = [];
-  public progressProof: FormControl
+  public progressProof: FormControl;
 
   constructor(
-    private fb: FormBuilder, 
-    private goalsService: GoalsService, 
-    private route: ActivatedRoute
+    private fb: FormBuilder,
+    private goalsService: GoalsService,
+    private route: ActivatedRoute,
   ) { }
-  
-  
 
   ngOnInit(): void {
-    this.goalId = this.route.parent.snapshot.params.goalId
+    this.goalId = this.route.parent.snapshot.params.goalId;
     this.progressProof = this.fb.control(' ');
     this.goalsService.getDayProgress(this.goalId)
-      .subscribe(res => this.progressData = res)
+      .subscribe(res => this.progressData = res);
   }
 
-  submitProgress(){
+  submitProgress(): void{
     const body = {
-      date: new Date,
+      date: new Date(),
       url: this.progressProof.value,
-      personalGoalid: this.goalId
-    }
+      personalGoalid: this.goalId,
+    };
+
     this.goalsService.addGoalProgress(body).subscribe(
       () => {
-        this.progressProof.setValue('')
-        this.progressData.push(body)
+        this.progressProof.setValue('');
+        this.progressData.push(body);
       },
       err => console.error(err)
-    )
+    );
   }
 
 }

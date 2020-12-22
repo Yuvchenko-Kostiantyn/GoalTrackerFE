@@ -41,11 +41,11 @@ export class GoalsService {
     return this.http.get<IPersonalGoal>(`${this.url}/personal-goal?userId=${userId}&personalGoalId=${goalId}`);
   }
 
-  deleteUserGoal(goalId){
+  deleteUserGoal(goalId): Observable<any>{
     return this.http.delete(`${this.url}/day-progress?id=${goalId}`);
   }
 
-  addGoalProgress(body:Iprogress): Observable<any>{
+  addGoalProgress(body: Iprogress): Observable<any>{
     return this.http.post(`${this.url}/day-progress/`, body);
   }
 
@@ -53,7 +53,11 @@ export class GoalsService {
     return this.http.get(`${this.url}/day-progress/all?personalGoalId=${goalId}`);
   }
 
-  getUserGoalsStatistics(goalId){
-    return this.http.get(`${this.url}/personal-goal/all-grouped?userId=${goalId}`)
+  getUserGoalsStatistics(userId): Observable<any>{
+    return this.http.get(`${this.url}/personal-goal/all-grouped?userId=${userId}`);
+  }
+
+  getUsersGoalsByStatus(userId, status): Observable<IPersonalGoal[]>{
+    return this.http.get<IPersonalGoal[]>(`${this.url}/personal-goal?userId=${userId}&status=${status}`);
   }
 }

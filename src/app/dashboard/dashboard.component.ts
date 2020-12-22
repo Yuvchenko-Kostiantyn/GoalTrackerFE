@@ -10,17 +10,21 @@ import { GoalsService } from '../shared/services/goals.service';
 export class DashboardComponent implements OnInit {
 
   public statistics;
-  public goals: IPersonalGoal[]
-  public userId = localStorage.getItem('userId')
+  public goals: IPersonalGoal[];
+  public userId = localStorage.getItem('userId');
 
   constructor(private goalsService: GoalsService) { }
 
   ngOnInit(): void {
     this.goalsService.getUserGoalsStatistics(this.userId)
-    .subscribe(res => console.log(res))
+    .subscribe(res => {
+      this.statistics = res;
+    });
 
-    this.goalsService.getUsersPersonalGoals(this.userId)
-      .subscribe(res => this.goals = res)
+    // this.goalsService.getUsersGoalsByStatus(this.userId, 'IN_PROGRESS')
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     this.goals = res
+    //   });
   }
-
 }

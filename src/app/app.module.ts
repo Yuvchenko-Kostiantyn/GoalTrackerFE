@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LayoutModule } from './layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { TokenInterceptorService } from './shared/services/token-interceptor.service';
+import { StatisticsComponent } from './dashboard/statistics/statistics.component';
+import { GoalsComponent } from './dashboard/goals/goals.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
     PageNotFoundComponent,
     LandingComponent,
     DashboardComponent,
+    StatisticsComponent,
+    GoalsComponent,
     // BadgeComponent,
   ],
   imports: [
