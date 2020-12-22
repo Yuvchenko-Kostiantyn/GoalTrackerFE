@@ -3,21 +3,19 @@
     <h1 class="text-center">Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
+          <div class="alert alert-danger" role="alert" *ngIf="isEmailOrPasswordInvalid && !email.invalid">
+            Invalid password or email
+          </div>
           <label for="email">Email address</label>
           <input type="email" formControlName="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="email" aria-describedby="emailHelp">
           <small *ngIf="!email.invalid || !email.touched || !isEmailOrPasswordInvalid" id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
-          <small *ngIf="isEmailOrPasswordInvalid && !email.invalid" class="text-danger">Invalid password or email</small>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" formControlName="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" id="password">
           <small class="text-danger" *ngIf="password.invalid && password.touched">Password must be at least 5 characters in length</small>
         </div>
-        <!-- <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div> -->
         <div class="form-group">
           <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
               <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>

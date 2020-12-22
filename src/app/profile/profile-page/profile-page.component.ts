@@ -19,33 +19,6 @@ export class ProfilePageComponent implements OnInit {
 
   avatar = '../../../assets/images/empty-avatar.png';
 
-  // badges = [
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 500
-  //   },
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 600
-  //   },
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 200
-  //   },
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 3000
-  //   },
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 3500
-  //   },
-  //   {
-  //     img: '../../../assets/images/budg.webp',
-  //     points: 5500
-  //   },
-  // ];
-
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -67,7 +40,7 @@ export class ProfilePageComponent implements OnInit {
       });
     this.badgeService.getBadgesByUserId(this.urlId)
       .subscribe(badges => {
-        this.badges = badges;
+        this.badges = badges.sort((a, b) => a.scores > b.scores ? -1 : 1);
       });
   }
   onSubmit(): void {

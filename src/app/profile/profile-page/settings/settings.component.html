@@ -23,14 +23,15 @@
                     </div>
                 </div>
               </div>
-
+              
               <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <label for="password" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" [class.is-invalid]="email.invalid && email.touched" id="email" placeholder="Email" formControlName='email'>
-                  <small *ngIf="email.invalid && email.touched" class="text-danger">Please enter a valid email</small>
+                  <input type="password" formControlName="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" id="password" placeholder="Password">
+                  <small class="text-danger" *ngIf="password.invalid && password.touched">Password must be at least 5 characters in length</small>
                 </div>
               </div>
+
               <fieldset class="form-group">
                 <div class="row">
                   <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
