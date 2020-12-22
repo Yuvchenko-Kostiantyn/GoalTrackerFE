@@ -44,7 +44,7 @@ export class AddGoalProgressComponent implements OnInit {
         this.progressData.push(body);
       },
       err => {
-        if(err.error.message === 'This goal is finished'){
+        if (err.error.message === 'This goal is finished'){
           this.isGoalFinished = true;
         }
       }

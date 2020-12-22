@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
   }
 
   get password(): AbstractControl{
-    return this.updateForm.get('password'); 
+    return this.updateForm.get('password');
   }
 
   get gender(): AbstractControl{
