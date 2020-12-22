@@ -17,10 +17,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(): void{
-    // this.authServiсe.logout({}).subscribe(() => {});
-      this.authServiсe.isUserLoggedIn.next(false);
-      localStorage.clear();
-      this.router.navigate(['/']);
+    this.authServiсe.logUserOut();
   }
 
   toggleNav(): void {

@@ -26,6 +26,11 @@ export class AuthService {
 
     logout(data): Observable<any>{
       return this.http.get(this.url + '/signout');
+    }
 
+    logUserOut(){
+      this.isUserLoggedIn.next(false);
+      localStorage.clear();
+      this.router.navigate(['/']);
     }
 }
