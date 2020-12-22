@@ -24,8 +24,8 @@ export class SettingsComponent implements OnInit {
     return this.updateForm.get('last_name');
   }
 
-  get email(): AbstractControl{
-    return this.updateForm.get('email');
+  get password(): AbstractControl{
+    return this.updateForm.get('password'); 
   }
 
   get gender(): AbstractControl{
@@ -49,14 +49,13 @@ export class SettingsComponent implements OnInit {
         this.user = user;
         this.first_name.setValue(this.user.firstName);
         this.last_name.setValue(this.user.secondName);
-        this.email.setValue(this.user.email);
         this.gender.setValue(this.user.gender);
         this.birthdate.setValue(this.user.birthdate.toString().split('T')[0]);
       });
     this.updateForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(3)]],
       last_name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.minLength(5)]],
       gender: ['', Validators.required],
       birthdate: ['', Validators.required],
     });
@@ -64,24 +63,20 @@ export class SettingsComponent implements OnInit {
 
 
   onSubmit(): void {
-    const body = {
+    const updateUserBody = {
       firstName: this.first_name.value,
       secondName: this.last_name.value,
-      email: this.email.value,
-      password: this.user.password,
+      password: this.password.value,
+      email: this.user.email,
       gender: this.gender.value,
-      birthdate: new Date(this.birthdate.value),
-      location: this.user.location
+      birthdate:  new Date(this.birthdate.value),
+      location: this.user.location,
+      scores: this.user.scores
     };
     const userId = localStorage.getItem('userId');
-    this.userService.updateUser(body, userId)
+    this.userService.updateUser(updateUserBody, userId)
       .subscribe(() => {
-        this.authService.loginUser(body)
-          .subscribe((response) => {
-            localStorage.setItem('token', response.token );
-            localStorage.setItem('userId', response.id);
-            this.router.navigate([`/profile/${userId}`]);
-          });
+        this.router.navigate([`/profile/${userId}`]);
       });
   }
 }

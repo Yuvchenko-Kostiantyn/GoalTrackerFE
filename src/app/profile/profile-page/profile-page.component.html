@@ -6,6 +6,7 @@
             <p class="email">{{ user.email }}</p>
             <p class="gender">{{ user.gender }}</p>
             <p class="birthdate">{{ user.birthdate | date: 'dd MMM yyyy' }}</p>
+            <p class="location">{{ user.location }}</p>
             <p class="points">{{ user.scores }}</p>
             <button *ngIf="isOwner" class="btn btn-primary setting" (click)="onSubmit()">Settings</button>
         </div>

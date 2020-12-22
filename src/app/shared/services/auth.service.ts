@@ -33,4 +33,8 @@ export class AuthService {
       localStorage.clear();
       this.router.navigate(['/']);
     }
+    updateToken(data): Observable<any>{
+      console.log(data);
+      return this.http.post(this.url + '/token-update', data);
+    }
 }
