@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { TokenInterceptorService } from './shared/services/token-interceptor.service';
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 import { GoalsComponent } from './dashboard/goals/goals.component';
+import { BadgeListComponent } from './shared/components/badge-list/badge-list.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { GoalsComponent } from './dashboard/goals/goals.component';
     DashboardComponent,
     StatisticsComponent,
     GoalsComponent,
+    BadgeListComponent,
     // BadgeComponent,
   ],
   imports: [

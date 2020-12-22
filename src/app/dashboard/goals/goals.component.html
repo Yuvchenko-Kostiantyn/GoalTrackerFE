@@ -1,7 +1,11 @@
 <div class="row"> 
-    <h2 class="text-center">Your active goals</h2>
-    <div class="card">
-        <div class="card-body">
+    <div class="card" *ngFor="let goal of goals">
+        <div class="card-body d-flex justify-content-between align-middle">
+          <h5>{{goal.name}}</h5>
+          <div class="button-block">
+            <a class="btn btn-primary link mr-2" routerLink="/goals/{{goal.id}}/addprogress">Add progress</a>
+            <a class="btn btn-primary link" routerLink="/goals/{{goal.id}}">More info</a>
+          </div>
         </div>
       </div>
 </div>

@@ -58,6 +58,6 @@ export class GoalsService {
   }
 
   getUsersGoalsByStatus(userId, status): Observable<IPersonalGoal[]>{
-    return this.http.get<IPersonalGoal[]>(`${this.url}/personal-goal?userId=${userId}&status=${status}`);
+    return this.http.get<IPersonalGoal[]>(`${this.url}/personal-goal/all?userId=${userId}&status=${status}`);
   }
 }

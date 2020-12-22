@@ -1,5 +1,5 @@
  <h2 class="text-center">Your personal statistics</h2>
- <table class="table">
+ <table class="table table-bordered bg-white">
    <thead>
      <tr>
        <th>Status</th>
@@ -9,17 +9,17 @@
    <tbody>
        <tr>
            <td class="text-warning">In Progress</td>
-           <td class="text-center">{{statistics.IN_PROGRESS}}</td>
+           <td class="text-center">{{statistics.IN_PROGRESS ? statistics.IN_PROGRESS : 0}}</td>
        </tr>
 
        <tr>
            <td class="text-danger">Failed</td>
-           <td class="text-center">{{statistics.DROPPED}}</td>
+           <td class="text-center">{{statistics.DROPPED ? statistics.DROPPED : 0}}</td>
        </tr>
 
        <tr>
            <td class="text-success">Finished</td>
-           <td class="text-center">{{statistics.FINISHED}}</td>
+           <td class="text-center">{{statistics.FINISHED ? statistics.FINISHED : 0}}</td>
        </tr>
    </tbody>
  </table>
