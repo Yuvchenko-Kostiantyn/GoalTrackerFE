@@ -22,6 +22,7 @@ export class AddGoalProgressComponent implements OnInit {
     private route: ActivatedRoute,
   ) { }
 
+
   ngOnInit(): void {
     this.goalId = this.route.parent.snapshot.params.goalId;
     this.progressProof = this.fb.control(' ');

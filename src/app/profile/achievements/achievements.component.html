@@ -1,1 +1,11 @@
-<p>achievements works!</p>
+<div class="container h-100">
+    <div class=" badges row text-center">
+        <figure *ngFor="let badge of badges" class="col-12 col-md-6 col-lg-4 badge-item">
+            <img class="badge-img" [src]="badge.url" alt="Badge">
+            <figcaption class="badge-info">
+                <p>Drink 3L of water a day</p>
+                <p class="badge-point">{{ badge.scores }}</p>
+            </figcaption>
+        </figure>
+    </div>
+</div>

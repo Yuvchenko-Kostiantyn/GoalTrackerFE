@@ -6,12 +6,12 @@
             <p class="email">{{ user.email }}</p>
             <p class="gender">{{ user.gender }}</p>
             <p class="birthdate">{{ user.birthdate | date: 'dd MMM yyyy' }}</p>
-            <p class="points">{{ user.scores || 0 }}</p>
+            <p class="points">{{ user.scores }}</p>
             <button *ngIf="isOwner" class="btn btn-primary setting" (click)="onSubmit()">Settings</button>
         </div>
         <div class="badges">
             <div class="badgList" >
-                <img *ngFor="let badge of badges" [src]="badge.img" alt="Badge">
+                <img *ngFor="let badge of badges" [src]="badge.url" alt="Badge" (click)="onClick()">
             </div>
         </div>
     </div>
