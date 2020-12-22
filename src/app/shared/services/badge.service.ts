@@ -17,4 +17,7 @@ export class BadgeService {
     getBadgesByUserId(userId): Observable<IBadge[]> {
       return this.http.get<IBadge[]>(this.url + `/badge/all/${userId}`);
     }
+    getPersonalGoalBadges(personalGoalId): Observable<IBadge[]> {
+      return this.http.get<IBadge[]>(`${this.url}/all?personalGoalId=${personalGoalId}`);
+    }
 }
