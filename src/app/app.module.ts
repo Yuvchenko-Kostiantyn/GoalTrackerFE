@@ -14,6 +14,7 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
 import { StatisticsComponent } from './dashboard/statistics/statistics.component';
 import { GoalsComponent } from './dashboard/goals/goals.component';
 import { BadgeListComponent } from './shared/components/badge-list/badge-list.component';
+import { ErrorInterceptorService } from './shared/services/error-interceptor.service';
 
 
 @NgModule({
@@ -40,7 +41,12 @@ import { BadgeListComponent } from './shared/components/badge-list/badge-list.co
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true,
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
