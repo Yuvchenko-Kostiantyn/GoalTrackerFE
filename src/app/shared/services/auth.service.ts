@@ -14,7 +14,8 @@ export class AuthService {
 
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  private url = environment.apiUrl;
+  // private url = environment.apiUrl;
+  private url = 'http://localhost:8081';
 
     registerUser(data): Observable<any>{
       return this.http.post(this.url + '/registration', data);

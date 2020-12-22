@@ -13,7 +13,8 @@ export class UserService {
 
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  private url = environment.apiUrl;
+  // private url = environment.apiUrl;
+  private url = 'http://localhost:8081';
 
     getUser(userId): Observable<IUser> {
       return this.http.get<IUser>(this.url + `/user/${userId}`);

@@ -15,7 +15,8 @@ import { Iprogress } from '../interfaces/iprogress';
 export class GoalsService {
 
   constructor(private http: HttpClient) { }
-  private url = environment.apiUrl;
+  // private url = environment.apiUrl;
+  private url = 'http://localhost:8081';
 
   getGlobalGoals(): Observable<IGoal[]>{
     return this.http.get<IGoal[]>(this.url + '/global-goal/all');

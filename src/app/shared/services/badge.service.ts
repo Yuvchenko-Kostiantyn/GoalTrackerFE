@@ -12,7 +12,8 @@ export class BadgeService {
   constructor(private router: Router, private http: HttpClient) { }
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  private url = environment.apiUrl;
+  // private url = environment.apiUrl;
+  private url = 'http://localhost:8081';
 
     getBadgesByUserId(userId): Observable<IBadge[]> {
       return this.http.get<IBadge[]>(this.url + `/badge/all/${userId}`);
