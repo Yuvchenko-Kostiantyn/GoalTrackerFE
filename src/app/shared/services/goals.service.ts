@@ -16,7 +16,7 @@ export class GoalsService {
 
   constructor(private http: HttpClient) { }
   // private url = environment.apiUrl;
-  private url = 'http://localhost:8081';
+  private url = 'http://ec2-54-160-242-66.compute-1.amazonaws.com/api';
 
   getGlobalGoals(): Observable<IGoal[]>{
     return this.http.get<IGoal[]>(this.url + '/global-goal/all');
