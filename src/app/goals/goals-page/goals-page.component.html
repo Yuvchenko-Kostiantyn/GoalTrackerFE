@@ -4,7 +4,7 @@
         <div class="row mt-2">
             <h2 class="text-center">List of your goals</h2>            
         </div>
-        <div class="row" *ngIf="!goals">
+        <div class="row" *ngIf="goals && !goals.length">
             <div>
                 <p>It seems you have no goals yet</p>
                 <a routerLink="/goals/add">Let`s add one then...</a>
