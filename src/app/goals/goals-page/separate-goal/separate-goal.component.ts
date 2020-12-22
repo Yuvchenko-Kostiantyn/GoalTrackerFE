@@ -18,13 +18,13 @@ export class SeparateGoalComponent implements OnInit {
       map(data => data.length)
     )
       .subscribe(res => {
-        this.getProgressValue(this.goal.days, res)
-      })
-    
+        this.getProgressValue(this.goal.days, res);
+      });
+
   }
 
   getProgressValue(data, length): void{
-    const precentage = (length / data) * 100
-    this.progressBarLength = precentage + '%'
+    const precentage = (length / data) * 100;
+    this.progressBarLength = precentage + '%';
   }
 }

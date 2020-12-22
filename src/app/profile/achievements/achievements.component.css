@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
+:host{
+    display: block;
+    min-height: calc(100vh - 112px);
+    background-image: url('../../../assets/images/bg.png');
+    font-family: 'Oswald', sans-serif;
+}
+.badges {
+    padding: 2rem 0;
+}
+.badge-item {
+    padding: 0 1rem;
+}
+.badge-img {
+    padding: 2px;
+    border-radius: 50%;
+    max-height: 150px;
+    max-width: 150px;
+    background-color: #17a2b8;
+}
+.badge-info {
+    background: none;
+    color: black;
+    font-weight: bold;
+}
+.badge-point {
+    color: green;
+}

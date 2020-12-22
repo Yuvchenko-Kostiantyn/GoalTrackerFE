@@ -70,7 +70,8 @@ export class SettingsComponent implements OnInit {
       email: this.email.value,
       password: this.user.password,
       gender: this.gender.value,
-      birthdate: new Date(this.birthdate.value)
+      birthdate: new Date(this.birthdate.value),
+      location: this.user.location
     };
     const userId = localStorage.getItem('userId');
     this.userService.updateUser(body, userId)
