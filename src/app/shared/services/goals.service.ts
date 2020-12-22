@@ -45,7 +45,7 @@ export class GoalsService {
     return this.http.delete(`${this.url}/day-progress?id=${goalId}`);
   }
 
-  addGoalProgress(body:Iprogress): Observable<any>{
+  addGoalProgress(body: Iprogress): Observable<any>{
     return this.http.post(`${this.url}/day-progress/`, body);
   }
 
