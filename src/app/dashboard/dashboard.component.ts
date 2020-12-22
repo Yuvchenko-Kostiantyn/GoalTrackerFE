@@ -21,13 +21,11 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.goalsService.getUserGoalsStatistics(this.userId)
     .subscribe(res => {
-      console.log(res)
       this.statistics = res;
     });
 
     this.goalsService.getUsersGoalsByStatus(this.userId, 'IN_PROGRESS')
       .subscribe(res => {
-        console.log(res)
         this.goals = res;
       });
 

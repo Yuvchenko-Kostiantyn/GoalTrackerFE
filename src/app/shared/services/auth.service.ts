@@ -28,13 +28,13 @@ export class AuthService {
       return this.http.get(this.url + '/signout');
     }
 
-    logUserOut(){
+    logUserOut(): void{
       this.isUserLoggedIn.next(false);
       localStorage.clear();
       this.router.navigate(['/']);
     }
+
     updateToken(data): Observable<any>{
-      console.log(data);
       return this.http.post(this.url + '/token-update', data);
     }
 }
