@@ -9,18 +9,18 @@ import { GoalsService } from 'src/app/shared/services/goals.service';
   styleUrls: ['./separate-goal.component.css']
 })
 export class SeparateGoalComponent implements OnInit {
+
   @Input() goal: IPersonalGoal;
   public progressBarLength = '0%';
+
   constructor(private goalsService: GoalsService) { }
 
   ngOnInit(): void {
     this.goalsService.getDayProgress(this.goal.id).pipe(
       map(data => data.length)
-    )
-      .subscribe(res => {
+    ).subscribe(res => {
         this.getProgressValue(this.goal.days, res);
       });
-
   }
 
   getProgressValue(data, length): void{

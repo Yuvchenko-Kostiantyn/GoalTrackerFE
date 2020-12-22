@@ -1,0 +1,5 @@
+<div class="badges">
+    <div class="badgList">
+        <img *ngFor="let badge of badges" [src]="badge.url" alt="Badge" (click)="onClick()">
+    </div>
+</div>

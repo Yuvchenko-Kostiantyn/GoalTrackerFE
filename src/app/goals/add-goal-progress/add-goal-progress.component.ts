@@ -19,9 +19,8 @@ export class AddGoalProgressComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private goalsService: GoalsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) { }
-
 
 
   ngOnInit(): void {
@@ -31,12 +30,13 @@ export class AddGoalProgressComponent implements OnInit {
       .subscribe(res => this.progressData = res);
   }
 
-  submitProgress(){
+  submitProgress(): void{
     const body = {
-      date: new Date,
+      date: new Date(),
       url: this.progressProof.value,
-      personalGoalid: this.goalId
+      personalGoalid: this.goalId,
     };
+
     this.goalsService.addGoalProgress(body).subscribe(
       () => {
         this.progressProof.setValue('');

@@ -1,1 +1,29 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <h2 class="text-center mt-2">Dashboard</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <h3 class="text-center">Your active goals</h3>
+                <div class="text-center" *ngIf="!goals.length">
+                    <p >You have no current active goals</p>
+                    <a routerLink="/goals/add">Add one now</a>
+                </div>
+                
+                <app-goals [goals]="goals" *ngIf="goals.length"></app-goals>
+            </div>
+            
+            <div class="col-lg-6 col-md-12">
+                <app-statistics [statistics]="statistics" *ngIf="statistics"></app-statistics>
+            </div>
+
+            <div class="col">
+                <h3 class="text-center">Your achievements</h3>
+                <p class="text-center" *ngIf="!badges.length">You have no achievements</p>
+                <app-badge-list [badges]="badges" *ngIf="badges.length"></app-badge-list>
+            </div>
+        </div>
+    </div>
+</div>
