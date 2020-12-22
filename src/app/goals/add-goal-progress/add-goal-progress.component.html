@@ -2,11 +2,15 @@
   <a class="btn btn-primary btn-sm mt-3" routerLink="/goals">Go back to goals</a>
     <h2 class="text-center mb-2">Add progress</h2>
     <div class="mb-3">
+      <div class="alert alert-danger" role="alert" *ngIf="isGoalFinished">
+        This goal is already finished, you can't add any more progress
+      </div>
       <label class="form-label">Proof url</label>
       <input type="url" class="form-control" [formControl]="progressProof">
       <small class="form-text">Please provide a url to a photo- or videoproof of your progress. We believe in your honesty.</small>
     </div>
     <button type="submit" class="btn btn-primary" (click)="submitProgress()">Add progress</button>
+
 
     <h2 class="text-center mb-2">Previous progress</h2>
 

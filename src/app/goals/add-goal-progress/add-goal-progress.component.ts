@@ -14,6 +14,7 @@ export class AddGoalProgressComponent implements OnInit {
 
   public goalId;
   public progressData = [];
+  public isGoalFinished = false;
   public progressProof: FormControl;
 
   constructor(
@@ -42,7 +43,11 @@ export class AddGoalProgressComponent implements OnInit {
         this.progressProof.setValue('');
         this.progressData.push(body);
       },
-      err => console.error(err)
+      err => {
+        if(err.error.message === 'This goal is finished'){
+          this.isGoalFinished = true;
+        }
+      }
     );
   }
 
