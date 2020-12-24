@@ -13,8 +13,7 @@ export class UserService {
 
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  // private url = environment.apiUrl;
-  private url = 'http://ec2-54-160-242-66.compute-1.amazonaws.com/api';
+  private url = environment.apiUrl;
 
     getUser(userId): Observable<IUser> {
       return this.http.get<IUser>(this.url + `/user/${userId}`);

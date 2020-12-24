@@ -9,13 +9,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  // Service for future registration and authorization API interaction
   constructor(private router: Router, private http: HttpClient) { }
 
 
   public isUserLoggedIn = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
-  // private url = environment.apiUrl;
-  private url = 'http://ec2-54-160-242-66.compute-1.amazonaws.com/api';
+  private url = environment.apiUrl;
 
     registerUser(data): Observable<any>{
       return this.http.post(this.url + '/registration', data);
