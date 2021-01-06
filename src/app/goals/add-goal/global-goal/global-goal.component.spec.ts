@@ -16,6 +16,11 @@ describe('GlobalGoalComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GlobalGoalComponent);
     component = fixture.componentInstance;
+
+    component.globalGoals = [
+      {id: 1, name: 'Test goal 1', days: 10, season: 'ALL_YEAR'}
+    ];
+    
     fixture.detectChanges();
   });
 

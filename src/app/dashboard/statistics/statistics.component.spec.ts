@@ -16,6 +16,13 @@ describe('StatisticsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StatisticsComponent);
     component = fixture.componentInstance;
+
+    component.statistics = {
+      IN_PROGRESS: 0,
+      DROPPED: 0,
+      FINISHED: 0
+    }
+
     fixture.detectChanges();
   });
 

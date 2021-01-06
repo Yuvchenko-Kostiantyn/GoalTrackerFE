@@ -1,8 +1,6 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { GoalsService } from 'src/app/shared/services/goals.service';
 
 @Component({

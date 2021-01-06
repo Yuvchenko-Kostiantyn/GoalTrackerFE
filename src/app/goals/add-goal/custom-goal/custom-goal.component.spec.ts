@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CustomGoalComponent } from './custom-goal.component';
 
@@ -8,7 +9,8 @@ describe('CustomGoalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomGoalComponent ]
+      declarations: [ CustomGoalComponent ],
+      imports: [ReactiveFormsModule]
     })
     .compileComponents();
   });
