@@ -1,34 +1,30 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { convertToParamMap, ParamMap, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ReplaySubject } from 'rxjs';
 
 import { AddGoalProgressComponent } from './add-goal-progress.component';
 
-class ActivatedRouteStub {
-  private subject = new ReplaySubject<ParamMap>();
-
-  constructor(initialParams?: Params) {
-    this.setParamMap(initialParams);
-  }
-
-  readonly paramMap = this.subject.asObservable();
-
-  setParamMap(params?: Params) {
-    this.subject.next(convertToParamMap(params));
-  };
-}
 
 describe('AddGoalProgressComponent', () => {
   let component: AddGoalProgressComponent;
   let fixture: ComponentFixture<AddGoalProgressComponent>;
+  let routeStub = {
+    parent: {
+      snapshot: {
+        params: {
+          goalId: 1,
+        }
+      }
+    }
+  }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddGoalProgressComponent ],
-      imports: [ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule]
+      imports: [ReactiveFormsModule, HttpClientTestingModule, RouterTestingModule],
+      providers: [{provide: ActivatedRoute, useValue: routeStub }]
     })
     .compileComponents();
   });

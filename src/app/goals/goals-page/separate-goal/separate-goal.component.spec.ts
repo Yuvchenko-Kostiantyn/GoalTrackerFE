@@ -1,5 +1,6 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { from, of } from 'rxjs';
 import { GoalsService } from 'src/app/shared/services/goals.service';
 
 import { SeparateGoalComponent } from './separate-goal.component';
@@ -7,12 +8,17 @@ import { SeparateGoalComponent } from './separate-goal.component';
 describe('SeparateGoalComponent', () => {
   let component: SeparateGoalComponent;
   let fixture: ComponentFixture<SeparateGoalComponent>;
+  let getGoalSpy
 
   beforeEach(async () => {
+    let mockData = {length: 5}
+    const goalsService = jasmine.createSpyObj('GoalsService', ['getDayProgress']);
+    getGoalSpy = goalsService.getDayProgress.and.returnValue(of(mockData))
+
     await TestBed.configureTestingModule({
       declarations: [ SeparateGoalComponent ],
       imports: [ HttpClientTestingModule ],
-      providers: [GoalsService]
+      providers: [{provide: GoalsService, useValue: goalsService}]
     })
     .compileComponents();
   });
@@ -36,7 +42,14 @@ describe('SeparateGoalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', () => {})
 
+  it('should count the precentage', () => {
+    component.getProgressValue(20, 10);
+    expect(component.progressBarLength).toEqual('50%')
   })
+
+  it('should retirieve a value', fakeAsync(() => {
+    expect(getGoalSpy).toHaveBeenCalled();
+  }))
 });
