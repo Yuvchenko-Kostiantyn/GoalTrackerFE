@@ -20,10 +20,33 @@ describe('SignupComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('form should be invalid when empty', () => {
+    expect(component.registrationForm.valid).toBeFalsy();
+  });
+
+  it('form email field should accept valid email', () => {
+    let emailField = component.registrationForm.controls['email'];
+
+    emailField.setValue('invalidEmail@email');
+    expect(emailField.valid).toBeFalsy();
+
+    emailField.setValue('validEmail@email.com');
+    expect(emailField.valid).toBeTruthy()
+  });
+
+  it('form should not accept invalid email', () => {
+    let emailField = component.registrationForm.controls['email'];
+
+    emailField.setValue('validEmail@email');
+    expect(emailField.valid).toBeFalsy();
+  })
 });
